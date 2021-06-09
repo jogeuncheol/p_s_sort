@@ -11,24 +11,21 @@ void ft_sa(t_list **list, int *push_swap_count)
     (*list)->sort_index = (*list)->next->sort_index;
     (*list)->next->sort_index = tmp;
     *push_swap_count = *push_swap_count + 1;
-    //ft_putstr("sa\n");
-    printf("sa\n");
+    write(1, "sa\n", 3);
 }
 
 void ft_ra(t_list **list, int *push_swap_count)
 {
     (*list) = (*list)->next;
     *push_swap_count = *push_swap_count + 1;
-    //ft_putstr("ra\n");
-    printf("ra\n");
+    write(1, "ra\n", 3);
 }
 
 void ft_rra(t_list **list, int *push_swap_count)
 {
     (*list) = (*list)->prev;
     *push_swap_count = *push_swap_count + 1;
-    //ft_putstr("rra\n");
-    printf("rra\n");
+    write(1, "rra\n", 4);
 }
 
 void ft_pb(t_list **stack_A, t_list **stack_B, t_list **B_end, int *push_swap_count)
@@ -55,6 +52,5 @@ void ft_pb(t_list **stack_A, t_list **stack_B, t_list **B_end, int *push_swap_co
 	}
 	*stack_A = tmp_node;
     *push_swap_count = *push_swap_count + 1;
-    //ft_putstr("pb\n");
-    printf("pb\n");
+    write(1, "pb\n", 3);
 }

@@ -1,9 +1,7 @@
 #include "push_swap.h"
 
 void std_sort(t_list **stack_A, t_list **stack_B, t_list **B_end, int *push_swap_count)
-{ // line over 25
-    t_list *tmp_list;
-
+{
     if ((*stack_A)->data > (*stack_A)->next->data)
         ft_sa(stack_A, push_swap_count);
     else if ((*stack_A)->data > (*stack_A)->prev->data || (*stack_A)->next->data > (*stack_A)->prev->data)
@@ -19,12 +17,7 @@ void std_sort(t_list **stack_A, t_list **stack_B, t_list **B_end, int *push_swap
                 else
                     ft_rrb(stack_B, B_end, push_swap_count);
             }
-            if (tmp_list != NULL)
-            {
-                tmp_list = refresh_B(*stack_B);
-                ft_pa(stack_A, stack_B, push_swap_count);
-                *stack_B = tmp_list;
-            }
+            ft_pa(stack_A, stack_B, push_swap_count);
         }
         else
             ft_pb(stack_A, stack_B, B_end, push_swap_count);

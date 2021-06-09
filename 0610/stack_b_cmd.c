@@ -4,7 +4,9 @@ void ft_pa(t_list **stack_A, t_list **stack_B, int *push_swap_count)
 {
     t_list *pop;
 	t_list *A_end;
+    t_list *tmp_list;
 
+    tmp_list = refresh_B(*stack_B);
 	pop = *stack_B;
 	A_end = (*stack_A)->prev;
 	(*stack_A)->prev = pop; // pop == *stack_B top -> stack_a top
@@ -13,8 +15,8 @@ void ft_pa(t_list **stack_A, t_list **stack_B, int *push_swap_count)
 	A_end->next = pop;
 	*stack_A = (*stack_A)->prev;
     *push_swap_count = *push_swap_count + 1;
-    //ft_putstr("pa\n");
-    printf("pa\n");
+    *stack_B = tmp_list;
+    write(1, "pa\n", 3);
 }
 
 void ft_rb(t_list **stack_B, t_list **B_end, int *push_swap_count)
@@ -22,8 +24,7 @@ void ft_rb(t_list **stack_B, t_list **B_end, int *push_swap_count)
     *B_end = *stack_B;
     *stack_B = (*stack_B)->next;
     *push_swap_count = *push_swap_count + 1;
-    //ft_putstr("rb\n");
-    printf("rb\n");
+    write(1, "rb\n", 3);
 }
 
 void ft_rrb(t_list **stack_B, t_list **B_end, int *push_swap_count)
@@ -31,8 +32,7 @@ void ft_rrb(t_list **stack_B, t_list **B_end, int *push_swap_count)
     *stack_B = (*stack_B)->prev;
     *B_end = (*stack_B)->prev;
     *push_swap_count = *push_swap_count + 1;
-    //ft_putstr("rrb\n");
-    printf("rrb\n");
+    write(1, "rrb\n", 4);
 }
 
 t_list *refresh_B(t_list *stack_B)
@@ -58,9 +58,7 @@ void B_move_index(t_list **stack_A, t_list **stack_B, int index, int *push_swap_
     i = 0;
     while (i < index)
     {
-        tmp_list = refresh_B(*stack_B);
         ft_pa(stack_A, stack_B, push_swap_count);
-        *stack_B = tmp_list;
         i++;
     }
 }
