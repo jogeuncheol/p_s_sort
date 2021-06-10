@@ -40,7 +40,7 @@ int push_swap(int list_len, t_list **stack_A, int ori_list_len)
         return (0);
     if (length_of_list(*stack_A) >= 100)
         div_list(stack_A, &stack_B, &stack_B_end, &push_swap_count, index);
-    if (length_of_list(*stack_A) >= 100)
+    if (length_of_list(*stack_A) >= 50)
         repeat_push_swap(stack_A, &stack_B, &stack_B_end, &push_swap_count, ori_list_len);
     else
     {
