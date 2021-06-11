@@ -25,10 +25,10 @@ int dup_check_numbers(t_list *list)
     return (1);
 }
 
-int custom_atoi(char *argv, int *j)
+long custom_atoi(char *argv, int *j)
 {
-    int     nbr;
-    int     sign;
+    long     nbr;
+    long     sign;
 
     nbr = 0;
     sign = 1;

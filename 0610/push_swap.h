@@ -69,7 +69,7 @@ int validity_check_nbr(char *str);
 int if_nbr(char *str, int *i, int *nbr_check);
 
 int split_argv(char **argv, t_list **list);
-int custom_atoi(char *argv, int *j);
+long custom_atoi(char *argv, int *j);
 int dup_check_numbers(t_list *list);
 
 void single_linked_list(t_list **list, int nbr);
