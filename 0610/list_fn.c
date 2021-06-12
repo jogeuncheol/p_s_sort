@@ -37,6 +37,7 @@ void free_list(t_list *list)
 {
     t_list *tmp;
 
+    print_list2(list);
     while (list != NULL)
     {
         tmp = list->next;

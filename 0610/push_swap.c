@@ -71,7 +71,11 @@ int main(int argc, char *argv[])
             free_nodes(stack_A);
         }
         else
+        {
+            if (list != NULL)
+                free_list(list);
             write(1, "error\n", 6);
+        }
     }
     else
         write(1, "error\n", 6);

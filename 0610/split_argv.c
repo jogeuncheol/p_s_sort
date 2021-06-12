@@ -15,7 +15,6 @@ int dup_check_numbers(t_list *list)
         {
             if (data == j->data)
             {
-                free_list(list);
                 return (0);
             }
             j = j->next;
