@@ -30,7 +30,6 @@ void std_sort(t_list **stack_A, t_list **stack_B,
 int push_swap(int list_len, t_list **stack_A, int ori_list_len)
 {
     int index;
-    int tmp;
     int push_swap_count;
     t_list *stack_B;
     t_list *stack_B_end;
@@ -58,31 +57,28 @@ int main(int argc, char *argv[])
 {
     t_list *stack_A;
     t_list *list;
-    int index;
-    int count;
+    int A_len;
+    int list_len;
 
     list = NULL;
-    if (argc > 1 && validity_check_argv(argv) == 1)
+    if (argc > 1)
     {
-        if (split_argv(argv, &list) == 1 && dup_check_numbers(list) == 1)
+        if (validity_check_argv(argv) == 1 &&
+            split_argv(argv, &list) == 1 && dup_check_numbers(list) == 1)
         {
-            count = length_of_list2(list);
-            stack_A = circle_linked_list(-1, count, list);
-            pre_sort(&stack_A, list, count);
-            index = length_of_list(stack_A);
-            push_swap(count, &stack_A, index);
+            list_len = length_of_list2(list);
+            stack_A = circle_linked_list(-1, list_len, list);
+            A_len = length_of_list(stack_A);
+            if (A_len != list_len)
+                error_fn(list, stack_A);
+            pre_sort(&stack_A, list, list_len);
+            push_swap(list_len, &stack_A, A_len);
             free_list(list);
             free_nodes(stack_A);
         }
         else
-        {
-            if (list != NULL)
-                free_list(list);
-            write(1, "error\n", 6);
-        }
+            error_fn(list, stack_A);
     }
-    else
-        write(1, "error\n", 6);
     return (0);
 }
 

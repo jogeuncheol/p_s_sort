@@ -82,4 +82,6 @@ void                free_list(t_list *list);
 int                 length_of_list2(t_list *list);
 int                 is_nbr(char c);
 
+void                error_fn(t_list *list, t_list *stack_A);
+
 #endif

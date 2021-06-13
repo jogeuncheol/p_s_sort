@@ -5,9 +5,12 @@ t_list *creat_node(int i)
     t_list *node;
 
     node = (t_list *)malloc(sizeof(t_list));
+    if (node == NULL)
+        return (NULL);
     node->data = i;
+    node->sort_index = 0;
     node->prev = NULL;
-    node->next = NULL; 
+    node->next = NULL;
     return (node);
 }
 

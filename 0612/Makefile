@@ -10,7 +10,8 @@ SRC = push_swap.c\
 		util_fn2.c\
 		div_list.c\
 		validity_check.c\
-		split_argv.c
+		split_argv.c\
+		error_fn.c
 
 OBJ = $(SRC:.c=.o)
 
