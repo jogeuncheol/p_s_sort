@@ -26,6 +26,8 @@ int length_of_list(t_list *list)
 	int len;
 	t_list *tmp;
 
+    if (list == NULL)
+        return (0);
 	len = 1;
 	tmp = list->next;
 	while (tmp != list)

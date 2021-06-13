@@ -8,7 +8,7 @@ t_list *circle_linked_list(int i, int list_len, t_list *list)
 
     head = NULL;
     prev = NULL;
-    while (++i < list_len - 10)
+    while (++i < list_len)
     {
         node = creat_node(list->data);
         if (node == NULL)
@@ -17,6 +17,8 @@ t_list *circle_linked_list(int i, int list_len, t_list *list)
         {
             head = node;
             prev = node;
+            node->next = node;
+            node->prev = node;
         }
         else
         {
