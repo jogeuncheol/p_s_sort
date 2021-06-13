@@ -21,11 +21,7 @@ t_list *circle_linked_list(int i, int list_len, t_list *list)
             node->prev = node;
         }
         else
-        {
-            link_nodes(head, prev, node);
-            prev = node;
-            head->prev = node;
-        }
+            link_nodes(&head, &prev, node);
         list = list->next;
     }
     return (head);

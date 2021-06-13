@@ -14,11 +14,13 @@ t_list *creat_node(int i)
     return (node);
 }
 
-void link_nodes(t_list *h_node, t_list *p_node, t_list *node)
+void link_nodes(t_list **h_node, t_list **p_node, t_list *node)
 {
-    p_node->next = node;
-    node->next = h_node;
-    node->prev = p_node;
+    (*p_node)->next = node;
+    node->next = *h_node;
+    node->prev = *p_node;
+    *p_node = node;
+    (*h_node)->prev = node;
 }
 
 int length_of_list(t_list *list)

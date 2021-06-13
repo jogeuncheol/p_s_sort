@@ -23,7 +23,7 @@ typedef struct s_index
 
 t_list              *creat_node(int i);
 t_list              *circle_linked_list(int i, int list_len, t_list *list);
-void                link_nodes(t_list *h_node, t_list *p_node, t_list *node);
+void                link_nodes(t_list **h_node, t_list **p_node, t_list *node);
 void                free_nodes(t_list *head);
 int                 length_of_list(t_list *list);
 
