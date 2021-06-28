@@ -41,7 +41,6 @@ void	std_sort(t_list **stack_a, t_list **stack_b,
 
 int		push_swap(int list_len, t_list **stack_a, int ori_list_len)
 {
-	int		index;
 	int		push_swap_count;
 	t_list	*stack_b;
 	t_list	*stack_b_end;
@@ -49,11 +48,11 @@ int		push_swap(int list_len, t_list **stack_a, int ori_list_len)
 	stack_b = NULL;
 	stack_b_end = NULL;
 	push_swap_count = 0;
-	index = ori_list_len / 5;
 	if (check_sort(*stack_a) == 1)
 		return (0);
 	if (length_of_clist(*stack_a) >= 100)
-		push_swap_count += div_list(stack_a, &stack_b, &stack_b_end, index);
+		push_swap_count +=
+			div_list(stack_a, &stack_b, &stack_b_end, (ori_list_len / 5));
 	if (length_of_clist(*stack_a) >= 50)
 		push_swap_count +=
 			repeat_push_swap(stack_a, &stack_b, &stack_b_end, ori_list_len);
