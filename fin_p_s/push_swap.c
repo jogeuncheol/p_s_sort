@@ -27,7 +27,7 @@ void	std_sort(t_list **stack_a, t_list **stack_b,
 			while (*stack_b != NULL &&
 							find_max_index(*stack_b) != (*stack_b)->sort_index)
 			{
-				if (length_of_list(*stack_b) / 2 > find_max_order(*stack_b))
+				if (length_of_clist(*stack_b) / 2 > find_max_order(*stack_b))
 					ft_rb(stack_b, b_end, push_swap_count);
 				else
 					ft_rrb(stack_b, b_end, push_swap_count);
@@ -52,9 +52,9 @@ int		push_swap(int list_len, t_list **stack_a, int ori_list_len)
 	index = ori_list_len / 5;
 	if (check_sort(*stack_a) == 1)
 		return (0);
-	if (length_of_list(*stack_a) >= 100)
+	if (length_of_clist(*stack_a) >= 100)
 		push_swap_count += div_list(stack_a, &stack_b, &stack_b_end, index);
-	if (length_of_list(*stack_a) >= 50)
+	if (length_of_clist(*stack_a) >= 50)
 		push_swap_count +=
 			repeat_push_swap(stack_a, &stack_b, &stack_b_end, ori_list_len);
 	else
@@ -78,9 +78,9 @@ int		main(int argc, char *argv[])
 		if (validity_check_argv(argv) == 1 &&
 			split_argv(argv, &list) == 1 && dup_check_numbers(list) == 1)
 		{
-			list_len = length_of_list2(list);
+			list_len = length_of_slist(list);
 			stack_a = circle_linked_list(-1, list_len, list);
-			a_len = length_of_list(stack_a);
+			a_len = length_of_clist(stack_a);
 			if (a_len != list_len)
 				error_fn(list, stack_a);
 			pre_sort(&stack_a, list, list_len);

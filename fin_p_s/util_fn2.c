@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int		first_top_index(t_list *list, int index)
+static int	first_top_index(t_list *list, int index)
 {
 	int	top_index;
 	int	list_len;
@@ -20,7 +20,7 @@ int		first_top_index(t_list *list, int index)
 
 	i = 0;
 	top_index = 0;
-	list_len = length_of_list(list);
+	list_len = length_of_clist(list);
 	while (i < list_len)
 	{
 		if (list->sort_index < index)
@@ -34,7 +34,7 @@ int		first_top_index(t_list *list, int index)
 	return (top_index);
 }
 
-int		first_bottom_index(t_list *list, int index)
+static int	first_bottom_index(t_list *list, int index)
 {
 	int	bottom_index;
 	int	list_len;
@@ -42,7 +42,7 @@ int		first_bottom_index(t_list *list, int index)
 
 	i = 0;
 	bottom_index = 0;
-	list_len = length_of_list(list);
+	list_len = length_of_clist(list);
 	while (i < list_len)
 	{
 		if (list->sort_index < index)
@@ -56,7 +56,7 @@ int		first_bottom_index(t_list *list, int index)
 	return (bottom_index);
 }
 
-int		ra_or_rra(t_list *list, int index)
+int			ra_or_rra(t_list *list, int index)
 {
 	int		top_index;
 	int		bottom_index;
@@ -66,28 +66,4 @@ int		ra_or_rra(t_list *list, int index)
 	if (top_index < bottom_index)
 		return (1);
 	return (0);
-}
-
-int		ft_atoi(char *str)
-{
-	int	i;
-	int	ret;
-	int	sign;
-
-	i = 0;
-	ret = 0;
-	sign = 0;
-	if (str[i] == '-')
-	{
-		sign = 1;
-		i++;
-	}
-	while (str[i] != '\0')
-	{
-		ret = (ret * 10) + str[i] - '0';
-		i++;
-	}
-	if (sign == 1)
-		ret = ret * -1;
-	return (ret);
 }

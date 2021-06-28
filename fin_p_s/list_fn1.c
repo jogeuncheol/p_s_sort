@@ -35,47 +35,55 @@ void	link_nodes(t_list **h_node, t_list **p_node, t_list *node)
 	(*h_node)->prev = node;
 }
 
-int		length_of_list(t_list *list)
+t_list	*circle_linked_list(int i, int list_len, t_list *list)
 {
-	int		len;
-	t_list	*tmp;
+	t_list	*node;
+	t_list	*head;
+	t_list	*prev;
 
-	if (list == NULL)
-		return (0);
-	len = 1;
-	tmp = list->next;
-	while (tmp != list)
+	head = NULL;
+	prev = NULL;
+	while (++i < list_len)
 	{
-		len++;
-		tmp = tmp->next;
+		node = creat_node(list->data);
+		if (node == NULL)
+			return (head);
+		if (head == NULL)
+		{
+			head = node;
+			prev = node;
+			node->next = node;
+			node->prev = node;
+		}
+		else
+			link_nodes(&head, &prev, node);
+		list = list->next;
 	}
-	return (len);
+	return (head);
 }
 
-void	free_list(t_list *list)
+void	single_linked_list(t_list **list, int nbr)
 {
-	t_list	*tmp;
+	t_list	*head;
+	t_list	*new_node;
 
-	while (list != NULL)
+	head = NULL;
+	new_node = NULL;
+	if (*list == NULL)
 	{
-		tmp = list->next;
-		free(list);
-		list = NULL;
-		list = tmp;
+		*list = creat_node(nbr);
+		if (*list == NULL)
+			error_fn(*list, NULL);
 	}
-}
-
-void	free_nodes(t_list *head)
-{
-	t_list	*tmp;
-
-	tmp = head->next;
-	while (tmp != head)
+	else
 	{
-		tmp = tmp->next;
-		free(tmp->prev);
-		tmp->prev = NULL;
+		head = *list;
+		while ((*list)->next != NULL)
+			*list = (*list)->next;
+		new_node = creat_node(nbr);
+		if (new_node == NULL)
+			error_fn(*list, NULL);
+		(*list)->next = new_node;
+		*list = head;
 	}
-	free(tmp);
-	tmp = NULL;
 }

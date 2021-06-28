@@ -50,24 +50,6 @@ int		find_min_index(t_list *list)
 	return (min);
 }
 
-int		find_max_data(t_list *list)
-{
-	t_list	*tmp;
-	int		max;
-
-	if (list == NULL || list->next == NULL)
-		return (0);
-	tmp = list->next;
-	max = list->data;
-	while (tmp != list)
-	{
-		if (max < tmp->data)
-			max = tmp->data;
-		tmp = tmp->next;
-	}
-	return (max);
-}
-
 int		find_max_order(t_list *list)
 {
 	t_list	*tmp;

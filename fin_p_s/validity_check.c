@@ -12,14 +12,14 @@
 
 #include "push_swap.h"
 
-int		is_nbr(char c)
+static int	is_nbr(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
 }
 
-int		if_nbr(char *str, int *i, int *nbr_check)
+static int	if_nbr(char *str, int *i, int *nbr_check)
 {
 	if (str[*i] >= '0' && str[*i] <= '9')
 	{
@@ -38,7 +38,7 @@ int		if_nbr(char *str, int *i, int *nbr_check)
 	return (1);
 }
 
-int		validity_check_nbr(char *str)
+int			validity_check_nbr(char *str)
 {
 	int	i;
 	int	nbr_check;
@@ -59,7 +59,7 @@ int		validity_check_nbr(char *str)
 	return (0);
 }
 
-int		validity_check_argv(char **argv)
+int			validity_check_argv(char **argv)
 {
 	int	i;
 	int	j;

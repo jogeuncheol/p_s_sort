@@ -48,7 +48,7 @@ int	repeat_push_swap(t_list **stack_a, t_list **stack_b,
 	int push_swap_count;
 
 	push_swap_count = 0;
-	index = length_of_list(*stack_a);
+	index = length_of_clist(*stack_a);
 	while (check_sort_length(*stack_a, ori_list_len) == 0)
 	{
 		break_point = find_max_index(*stack_b);
@@ -57,7 +57,7 @@ int	repeat_push_swap(t_list **stack_a, t_list **stack_b,
 			std_sort(stack_a, stack_b, b_end, &push_swap_count);
 		if (break_point == 0)
 			ft_pa(stack_a, stack_b, &push_swap_count);
-		if (length_of_list(*stack_a) < ori_list_len)
+		if (length_of_clist(*stack_a) < ori_list_len)
 			b_move_a_cindex(stack_a, stack_b, index, &push_swap_count);
 	}
 	return (push_swap_count);

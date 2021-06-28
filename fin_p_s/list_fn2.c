@@ -12,60 +12,24 @@
 
 #include "push_swap.h"
 
-t_list	*circle_linked_list(int i, int list_len, t_list *list)
+int		length_of_clist(t_list *list)
 {
-	t_list	*node;
-	t_list	*head;
-	t_list	*prev;
+	int		len;
+	t_list	*tmp;
 
-	head = NULL;
-	prev = NULL;
-	while (++i < list_len)
+	if (list == NULL)
+		return (0);
+	len = 1;
+	tmp = list->next;
+	while (tmp != list)
 	{
-		node = creat_node(list->data);
-		if (node == NULL)
-			return (head);
-		if (head == NULL)
-		{
-			head = node;
-			prev = node;
-			node->next = node;
-			node->prev = node;
-		}
-		else
-			link_nodes(&head, &prev, node);
-		list = list->next;
+		len++;
+		tmp = tmp->next;
 	}
-	return (head);
+	return (len);
 }
 
-void	single_linked_list(t_list **list, int nbr)
-{
-	t_list	*head;
-	t_list	*new_node;
-
-	head = NULL;
-	new_node = NULL;
-	if (*list == NULL)
-	{
-		*list = creat_node(nbr);
-		if (*list == NULL)
-			error_fn(*list, NULL);
-	}
-	else
-	{
-		head = *list;
-		while ((*list)->next != NULL)
-			*list = (*list)->next;
-		new_node = creat_node(nbr);
-		if (new_node == NULL)
-			error_fn(*list, NULL);
-		(*list)->next = new_node;
-		*list = head;
-	}
-}
-
-int		length_of_list2(t_list *list)
+int		length_of_slist(t_list *list)
 {
 	int		i;
 
@@ -76,4 +40,32 @@ int		length_of_list2(t_list *list)
 		list = list->next;
 	}
 	return (i);
+}
+
+void	free_list(t_list *list)
+{
+	t_list	*tmp;
+
+	while (list != NULL)
+	{
+		tmp = list->next;
+		free(list);
+		list = NULL;
+		list = tmp;
+	}
+}
+
+void	free_nodes(t_list *head)
+{
+	t_list	*tmp;
+
+	tmp = head->next;
+	while (tmp != head)
+	{
+		tmp = tmp->next;
+		free(tmp->prev);
+		tmp->prev = NULL;
+	}
+	free(tmp);
+	tmp = NULL;
 }

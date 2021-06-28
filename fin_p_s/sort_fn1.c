@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int		check_sort_length(t_list *list, int len)
+int				check_sort_length(t_list *list, int len)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ int		check_sort_length(t_list *list, int len)
 	return (1);
 }
 
-int		check_sort(t_list *list)
+int				check_sort(t_list *list)
 {
 	t_list	*tmp;
 
@@ -42,7 +42,7 @@ int		check_sort(t_list *list)
 	return (1);
 }
 
-void	data_swap(t_list **min, t_list **node)
+static void		data_swap(t_list **min, t_list **node)
 {
 	int	tmp;
 
@@ -51,7 +51,7 @@ void	data_swap(t_list **min, t_list **node)
 	(*node)->data = tmp;
 }
 
-t_list	*list_sort(t_list *list)
+static t_list	*list_sort(t_list *list)
 {
 	t_list	*head;
 	t_list	*min;
@@ -76,7 +76,7 @@ t_list	*list_sort(t_list *list)
 	return (list);
 }
 
-void	pre_sort(t_list **stack_a, t_list *list, int len)
+void			pre_sort(t_list **stack_a, t_list *list, int len)
 {
 	t_list	*tmp;
 	int		i;

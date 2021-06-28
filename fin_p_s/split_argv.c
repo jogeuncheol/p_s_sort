@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int		dup_check_numbers(t_list *list)
+int			dup_check_numbers(t_list *list)
 {
 	t_list	*i;
 	t_list	*j;
@@ -36,7 +36,7 @@ int		dup_check_numbers(t_list *list)
 	return (1);
 }
 
-long	custom_atoi(char *argv, int *j)
+static long	custom_atoi(char *argv, int *j)
 {
 	long	nbr;
 	long	sign;
@@ -59,7 +59,7 @@ long	custom_atoi(char *argv, int *j)
 	return (nbr * sign);
 }
 
-int		split_argv(char **argv, t_list **list)
+int			split_argv(char **argv, t_list **list)
 {
 	int		i;
 	int		j;
